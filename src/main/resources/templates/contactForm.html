@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Contact us</title>
+</head>
+<body>
+<div>
+    <section layout:fragment="content">
+        <h2>CONTACT US</h2>
+        <form action="#" th:action="@{/sendContactMailMessage}" method="post" th:object="${newMessage}">
+            <div class="form-group col-md-4">
+                <label for="inputFirstName">YOUR FIRST NAME</label>
+                <input type="text" th:field="*{receiverFirstName}" class="form-control" id="inputFirstName" placeholder="Enter your first name">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputLastName">YOUR LAST NAME</label>
+                <input type="text" th:field="*{receiverLastName}" class="form-control" id="inputLastName" placeholder="Enter your last name">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputEmailAddress">YOUR EMAIL ADDRESS</label>
+                <input type="text" th:field="*{emailAddress}" class="form-control" id="inputEmailAddress" aria-describedby="emailHelp" placeholder="Enter your email">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputSubject">SUBJECT</label>
+                <input type="text" th:field="*{subject}" class="form-control" id="inputSubject" placeholder="Enter subject">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputMessage">MESSAGE</label>
+                <textarea th:field="*{textContent}" class="form-control" id="inputMessage" rows="4" placeholder="Write message"></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+    </section>
+</div>
+</body>
+</html>
