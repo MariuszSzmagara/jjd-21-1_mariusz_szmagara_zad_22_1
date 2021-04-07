@@ -13,7 +13,7 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/regulamin")
+    @GetMapping("/career")
     public String getRegulamin() {
         return "career";
     }
