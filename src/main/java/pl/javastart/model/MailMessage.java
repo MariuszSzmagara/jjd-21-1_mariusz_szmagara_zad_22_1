@@ -1,50 +1,14 @@
 package pl.javastart.model;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class MailMessage {
 
-    private String receiver;
-    private String receiverFirstName;
-    private String receiverLastName;
-    private String emailAddress;
+    private String contactPersonFirstName;
+    private String contactPersonLastName;
+    private String contactPersonMailAddress;
     private String textContent;
     private String subject;
 
     public MailMessage() {
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
-    }
-
-    public String getReceiverFirstName() {
-        return receiverFirstName;
-    }
-
-    public void setReceiverFirstName(String receiverFirstName) {
-        this.receiverFirstName = receiverFirstName;
-    }
-
-    public String getReceiverLastName() {
-        return receiverLastName;
-    }
-
-    public void setReceiverLastName(String receiverLastName) {
-        this.receiverLastName = receiverLastName;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
     }
 
     public String getTextContent() {
@@ -61,5 +25,29 @@ public class MailMessage {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public String getContactPersonFirstName() {
+        return contactPersonFirstName;
+    }
+
+    public void setContactPersonFirstName(String contactPersonFirstName) {
+        this.contactPersonFirstName = contactPersonFirstName;
+    }
+
+    public String getContactPersonLastName() {
+        return contactPersonLastName;
+    }
+
+    public void setContactPersonLastName(String contactPersonLastName) {
+        this.contactPersonLastName = contactPersonLastName;
+    }
+
+    public String getContactPersonMailAddress() {
+        return contactPersonMailAddress;
+    }
+
+    public void setContactPersonMailAddress(String contactPersonMailAddress) {
+        this.contactPersonMailAddress = contactPersonMailAddress;
     }
 }
