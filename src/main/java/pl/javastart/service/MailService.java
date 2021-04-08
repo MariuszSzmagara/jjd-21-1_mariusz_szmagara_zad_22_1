@@ -27,10 +27,10 @@ public class MailService {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(mailMessage.getTextContent(), true);
-            helper.setFrom(mailMessage.getContactPersonMailAddress(),
-                    (mailMessage.getContactPersonFirstName() + " " + mailMessage.getContactPersonLastName()));
-            helper.setReplyTo(mailMessage.getContactPersonMailAddress());
-            helper.setCc(mailMessage.getContactPersonMailAddress());
+            helper.setFrom(mailMessage.getPerson().getEmailAddress(),
+                    (mailMessage.getPerson().getFirstName() + " " + mailMessage.getPerson().getLastName()));
+            helper.setReplyTo(mailMessage.getPerson().getEmailAddress());
+            helper.setCc(mailMessage.getPerson().getEmailAddress());
             helper.setTo(receiver);
             helper.setSubject(mailMessage.getSubject());
             javaMailSender.send(mimeMessage);
