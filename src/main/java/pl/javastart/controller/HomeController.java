@@ -14,7 +14,7 @@ public class HomeController {
     }
 
     @GetMapping("/career")
-    public String getRegulamin() {
+    public String getCareer() {
         return "career";
     }
 

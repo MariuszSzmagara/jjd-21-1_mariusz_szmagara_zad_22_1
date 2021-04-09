@@ -2,6 +2,7 @@ package pl.javastart.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -13,16 +14,18 @@ import java.io.UnsupportedEncodingException;
 
 @Service
 public class MailService {
-    private static final Logger logger = LoggerFactory.getLogger(MailService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MailService.class);
     private final JavaMailSender javaMailSender;
+
+    @Value("${spring.mail.username}")
+    private String receiver;
 
     public MailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
     public void sendMail(MailMessage mailMessage) {
-        String receiver = "javastart.pl.homework@gmail.com";
-        logger.debug("Wysyłam maila do {} ", receiver);
+        LOGGER.debug("Sending maila to {} ", receiver);
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
@@ -36,8 +39,8 @@ public class MailService {
             javaMailSender.send(mimeMessage);
         } catch (MessagingException | UnsupportedEncodingException exception) {
             exception.printStackTrace();
-            logger.warn("Błąd podczas wysyłania wiadomości ", exception);
+            LOGGER.warn("Error sending mail", exception);
         }
-        logger.debug("Maila do {} wysłany poprawnie", receiver);
+        LOGGER.debug("Mail to {} has been sent successfully!", receiver);
     }
 }
