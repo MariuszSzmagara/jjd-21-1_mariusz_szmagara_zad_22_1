@@ -14,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 
 @Service
 public class MailService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MailService.class);
+    private static final Logger logger = LoggerFactory.getLogger(MailService.class);
     private final JavaMailSender javaMailSender;
 
     @Value("${spring.mail.username}")
@@ -25,7 +25,7 @@ public class MailService {
     }
 
     public void sendMail(MailMessage mailMessage) {
-        LOGGER.debug("Sending maila to {} ", receiver);
+        logger.debug("Sending maila to {} ", receiver);
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
@@ -39,8 +39,8 @@ public class MailService {
             javaMailSender.send(mimeMessage);
         } catch (MessagingException | UnsupportedEncodingException exception) {
             exception.printStackTrace();
-            LOGGER.warn("Error sending mail", exception);
+            logger.warn("Error sending mail", exception);
         }
-        LOGGER.debug("Mail to {} has been sent successfully!", receiver);
+        logger.debug("Mail to {} has been sent successfully!", receiver);
     }
 }
